@@ -1,3 +1,4 @@
+import { UserProvider } from "@auth0/nextjs-auth0";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
@@ -18,7 +19,9 @@ function ToDoApp(props: ToDoAppProps) {
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
         <CssBaseline />
-        <Component {...pageProps} />
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
       </ThemeProvider>
     </CacheProvider>
   );
