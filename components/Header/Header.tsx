@@ -1,7 +1,7 @@
 import { useUser } from "@auth0/nextjs-auth0";
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import * as React from "react";
-import HandleUser from "./HandleUser";
+import HandleUser from "../HandleUser/HandleUser";
 
 const Header = () => {
   const { user } = useUser();
