@@ -3,14 +3,16 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import TasksContainer from "@/components/TasksContainer/TasksContainer";
 import styles from "@/styles/Home.module.css";
-import { Divider } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import { getTasks } from "services/services";
+import { Task } from "utility/interfaces/task";
 
-const Home: NextPage = ({ allTasks }: any) => {
-  const [tasks, setTasks] = useState(allTasks);
+type HomePageProps = { tasks: Task[] };
+
+const Home: NextPage<HomePageProps> = ({ tasks }) => {
+  const [userTasks, setUserTasks] = useState(tasks);
 
   return (
     <>
@@ -22,16 +24,14 @@ const Home: NextPage = ({ allTasks }: any) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main className={styles.main}>
-          <CreateTask />
-          <Divider />
-          <TasksContainer tasks={tasks} />
+          <CreateTask tasks={userTasks} setUserTasks={setUserTasks} />
+          <TasksContainer tasks={userTasks} setUserTasks={setUserTasks} />
         </main>
       </div>
       <Footer />
     </>
   );
 };
-
 export default Home;
 
 export const getServerSideProps = async () => {
@@ -39,7 +39,7 @@ export const getServerSideProps = async () => {
 
   return {
     props: {
-      allTasks: await newTasks,
+      tasks: await newTasks,
     },
   };
 };
