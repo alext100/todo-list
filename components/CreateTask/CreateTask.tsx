@@ -8,11 +8,11 @@ import {
   CardHeader,
   TextField,
 } from "@mui/material";
-import axios from "axios";
 import * as React from "react";
+import { createNewTask } from "services/services";
 import { Task } from "utility/interfaces/task";
 
-const CreateTask = () => {
+const CreateTask: React.FC = () => {
   const initialTask: Task = {
     id: "",
     taskName: "",
@@ -31,18 +31,6 @@ const CreateTask = () => {
 
   const resetForm = () => {
     setTask(initialTask);
-  };
-
-  const createNewTask = async (newTask: Task) => {
-    await axios.post(
-      "http://localhost:3010/tasks",
-      { ...newTask, date: Date.now(), state: "ToDo" },
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
   };
 
   const createTask = (event: React.FormEvent<HTMLFormElement>) => {
