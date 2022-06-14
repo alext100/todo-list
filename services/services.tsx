@@ -18,4 +18,19 @@ const createNewTask = async (newTask: Task) => {
   });
 };
 
-export { getTasks, createNewTask };
+const deleteTask = async (id: string) => {
+  await axios({
+    url: `${serverURL}/${id}`,
+    method: "DELETE",
+  });
+};
+
+const updateTask = async (task: Task) => {
+  await axios({
+    url: `${serverURL}/${task.id}`,
+    method: "PUT",
+    data: task,
+  });
+};
+
+export { getTasks, createNewTask, deleteTask, updateTask };
