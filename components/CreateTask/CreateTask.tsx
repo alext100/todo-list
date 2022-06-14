@@ -10,16 +10,15 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import * as React from "react";
-
-type Task = {
-  taskName: string;
-  taskDescription: string;
-};
+import { Task } from "utility/interfaces/task";
 
 const CreateTask = () => {
   const initialTask: Task = {
+    id: "",
     taskName: "",
     taskDescription: "",
+    date: "",
+    state: "ToDo",
   };
   const [task, setTask] = React.useState<Task>(initialTask);
 
@@ -35,11 +34,15 @@ const CreateTask = () => {
   };
 
   const createNewTask = async (newTask: Task) => {
-    await axios.post("", newTask, {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    await axios.post(
+      "http://localhost:3010/tasks",
+      { ...newTask, date: Date.now(), state: "ToDo" },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
   };
 
   const createTask = (event: React.FormEvent<HTMLFormElement>) => {
@@ -49,7 +52,7 @@ const CreateTask = () => {
   };
 
   return (
-    <Card sx={{ minWidth: 300 }}>
+    <Card sx={{ minWidth: 300, border: "1px solid #b0fbf4", boxShadow: 3 }}>
       <CardHeader title="Create new task" />
       <CardContent>
         <Box
@@ -83,7 +86,7 @@ const CreateTask = () => {
               multiline
               fullWidth
               variant="filled"
-              rows={6}
+              rows={4}
               value={task.taskDescription}
               onChange={handleTaskChange}
               data-testid="task-description"
