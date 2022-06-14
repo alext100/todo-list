@@ -11,8 +11,18 @@ import {
 import * as React from "react";
 import { createNewTask } from "services/services";
 import { Task } from "utility/interfaces/task";
+import { v4 as uuidv4 } from "uuid";
 
-const CreateTask: React.FC = () => {
+type CreateTaskProps = {
+  // eslint-disable-next-line no-unused-vars
+  setUserTasks: (arg0: Task[]) => void;
+  tasks: Task[];
+};
+
+const CreateTask: React.FC<CreateTaskProps> = ({
+  tasks = [],
+  setUserTasks,
+}) => {
   const initialTask: Task = {
     id: "",
     taskName: "",
@@ -26,6 +36,7 @@ const CreateTask: React.FC = () => {
     setTask({
       ...task,
       [event.target.id]: event.target.value,
+      id: uuidv4(),
     });
   };
 
@@ -37,6 +48,7 @@ const CreateTask: React.FC = () => {
     event.preventDefault();
     createNewTask(task);
     resetForm();
+    setUserTasks([...tasks, task]);
   };
 
   return (
