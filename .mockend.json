@@ -1,0 +1,20 @@
+{
+  "Tasks": {
+    "id": {
+      "regexp": "id-[0-9A-F]{12}"
+    },
+    "taskName": {
+      "loremWords": { "minLength": 5, "maxLength": 20 }
+    },
+    "taskDescription": {
+      "loremSentences": { "minLength": 100, "maxLength": 200 }
+    },
+    "date": {
+      "dateTime": {
+        "min": "2022-01-01T00:00:00Z",
+        "max": "2022-06-14T23:59:59Z"
+      }
+    },
+    "state": { "string": ["ToDo", "InProgress", "Done"] }
+  }
+}
