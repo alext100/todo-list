@@ -1,5 +1,7 @@
+import CreateTask from "@/components/CreateTask/CreateTask";
 import Footer from "@/components/Footer/Footer";
 import TaskCard from "@/components/TaskCard/TaskCard";
+import { Divider } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Header from "../components/Header/Header";
@@ -15,6 +17,8 @@ const Home: NextPage = () => (
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        <CreateTask />
+        <Divider />
         <TaskCard />
       </main>
     </div>
