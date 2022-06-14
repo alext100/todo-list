@@ -73,7 +73,7 @@ const HandleUser = () => {
 
   return (
     <Button color="inherit">
-      <a href="/api/auth/login">Login</a>
+      <Link href="/api/auth/login">Login</Link>
     </Button>
   );
 };
