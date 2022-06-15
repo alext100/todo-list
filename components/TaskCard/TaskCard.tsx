@@ -38,7 +38,13 @@ const TaskCard: React.FC<TasksCardProps> = ({
         <Typography variant="body2">{task?.taskDescription}</Typography>
       </CardContent>
       <CardActions>
-        <CardActionsSelect task={task} state={state} setState={setState} />
+        <CardActionsSelect
+          task={task}
+          state={state}
+          setState={setState}
+          setUserTasks={setUserTasks}
+          tasks={tasks}
+        />
         <ButtonGroup
           aria-label="button group for update and delete task"
           sx={{ position: "relative", top: 10, left: 40 }}

@@ -14,6 +14,7 @@ import { useSnackbar } from "notistack";
 import * as React from "react";
 import { updateTask } from "services/services";
 import { Task, UpdateTaskDialogProps } from "type";
+import updateAllTasks from "utility/updateAllTasks";
 
 const UpdateTaskDialog: React.FC<UpdateTaskDialogProps> = ({
   task,
@@ -47,27 +48,11 @@ const UpdateTaskDialog: React.FC<UpdateTaskDialogProps> = ({
     setOpen(false);
   };
 
-  const updatedTasks = () => {
-    const taskIndex = tasks.findIndex((obj) => obj.id === updatedTask.id);
-    const updatedTaskObj = {
-      ...tasks[taskIndex],
-      taskName: updatedTask.taskName,
-      taskDescription: updatedTask.taskDescription,
-    };
-    const updatedAllTasks = [
-      ...tasks.slice(0, taskIndex),
-      updatedTaskObj,
-      ...tasks.slice(taskIndex + 1),
-    ];
-
-    return updatedAllTasks;
-  };
-
   const handleSave = () => {
     setOpen(false);
     onUpdate(updatedTask);
 
-    setUserTasks(updatedTasks());
+    setUserTasks(updateAllTasks(tasks, updatedTask));
   };
 
   return (
