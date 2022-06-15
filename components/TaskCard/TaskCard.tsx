@@ -13,8 +13,7 @@ import {
 } from "@mui/material";
 import { useSnackbar } from "notistack";
 import * as React from "react";
-import { TasksCardProps } from "type";
-import { Task } from "utility/interfaces/task";
+import { Task, TasksCardProps } from "type";
 
 const TaskCard: React.FC<TasksCardProps> = ({
   task,
