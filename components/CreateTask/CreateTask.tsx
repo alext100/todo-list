@@ -1,3 +1,4 @@
+import styles from "@/styles/CreateTask.module.css";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 import {
   Box,
@@ -40,6 +41,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
       ...task,
       [event.target.id]: event.target.value,
       id: uuidv4(),
+      date: new Date().toLocaleString(),
     });
   };
 
@@ -59,8 +61,8 @@ const CreateTask: React.FC<CreateTaskProps> = ({
   };
 
   return (
-    <Card sx={{ minWidth: 300, border: "1px solid #b0fbf4", boxShadow: 3 }}>
-      <CardHeader title="Create new task" />
+    <Card className={styles.card}>
+      <CardHeader title="Create new task" className={styles.title} />
       <CardContent>
         <Box
           component="form"
@@ -86,8 +88,6 @@ const CreateTask: React.FC<CreateTaskProps> = ({
               error={validationError}
               helperText={validationError ? <p>Type something</p> : null}
             />
-          </Box>
-          <Box>
             <TextField
               id="taskDescription"
               label="Task description"
@@ -95,7 +95,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
               multiline
               fullWidth
               variant="filled"
-              rows={4}
+              rows={3}
               value={task.taskDescription}
               onChange={handleTaskChange}
               data-testid="task-description"

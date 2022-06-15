@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Task } from "utility/interfaces/task";
+import { Task } from "type";
 
 const serverURL = "http://localhost:3010/tasks";
 
@@ -14,7 +14,7 @@ const createNewTask = async (newTask: Task) => {
     url: serverURL,
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    data: { ...newTask, date: new Date().toLocaleString(), state: "ToDo" },
+    data: { ...newTask, state: "ToDo" },
   });
 };
 
