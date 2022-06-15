@@ -31,6 +31,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
     state: "ToDo",
   };
   const [task, setTask] = React.useState<Task>(initialTask);
+  const [validationError, setValidationError] = React.useState<boolean>(false);
 
   const handleTaskChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTask({
@@ -45,10 +46,14 @@ const CreateTask: React.FC<CreateTaskProps> = ({
   };
 
   const createTask = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    createNewTask(task);
-    resetForm();
-    setUserTasks([...tasks, task]);
+    if (task.taskName !== "" && task.taskDescription !== "") {
+      event.preventDefault();
+      createNewTask(task);
+      resetForm();
+      setUserTasks([...tasks, task]);
+    } else {
+      setValidationError(true);
+    }
   };
 
   return (
@@ -76,6 +81,8 @@ const CreateTask: React.FC<CreateTaskProps> = ({
               sx={{ marginBottom: 3 }}
               value={task.taskName}
               onChange={handleTaskChange}
+              error={validationError}
+              helperText={validationError ? <p>Type something</p> : null}
             />
           </Box>
           <Box>
@@ -90,6 +97,8 @@ const CreateTask: React.FC<CreateTaskProps> = ({
               value={task.taskDescription}
               onChange={handleTaskChange}
               data-testid="task-description"
+              error={validationError}
+              helperText={validationError ? <p>Type something</p> : null}
             />
           </Box>
           <CardActions sx={{ justifyContent: "center" }}>
@@ -97,6 +106,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
               type={"submit"}
               variant="contained"
               endIcon={<AddTaskIcon />}
+              disabled={!task.taskName || !task.taskDescription}
             >
               Add to Tasks
             </Button>

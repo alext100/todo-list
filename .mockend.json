@@ -1,5 +1,5 @@
 {
-  "Tasks": {
+  "Task": {
     "id": {
       "regexp": "id-[0-9A-F]{12}"
     },
