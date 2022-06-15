@@ -1,11 +1,18 @@
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Box, Button, Divider, Tooltip, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import Link from "next/link";
 import * as React from "react";
 
 const Footer: React.FC = () => (
-  <>
+  <Container>
     <Divider variant="middle" />
     <Typography component="div">
       <Box sx={{ textAlign: "center", m: 1 }}>
@@ -22,13 +29,13 @@ const Footer: React.FC = () => (
         <Tooltip title="Go to LinkedIn page">
           <Button>
             {" "}
-            <Link href="LinkedInIcon">
+            <Link href="https://www.linkedin.com/in/alexandr-turchenko/">
               <LinkedInIcon />
             </Link>
           </Button>
         </Tooltip>
       </Box>
     </Typography>
-  </>
+  </Container>
 );
 export default Footer;
