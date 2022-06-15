@@ -7,6 +7,7 @@ import { Task, TasksContainerProps } from "type";
 const TasksContainer: React.FC<TasksContainerProps> = ({
   tasks = [],
   setUserTasks,
+  stateToShow,
 }) => {
   const [checked, setChecked] = React.useState<Task[]>([]);
 
@@ -41,36 +42,38 @@ const TasksContainer: React.FC<TasksContainerProps> = ({
       }}
     >
       {tasks.map((task: Task) => {
-        const labelId = `checkbox-list-secondary-label-${task.taskName}`;
-        return (
-          <ListItem
-            key={task.id}
-            secondaryAction={
-              <Tooltip title="Choose task">
-                <Checkbox
-                  edge="end"
-                  onChange={handleToggle(task)}
-                  checked={checked.indexOf(task) !== -1}
-                  inputProps={{
-                    "aria-labelledby": labelId,
-                    "aria-label": `Checkbox for ${task.taskName} task`,
-                  }}
-                  sx={{
-                    right: "50px",
-                    top: "-80px",
-                  }}
-                />
-              </Tooltip>
-            }
-          >
-            <TaskCard
-              task={task}
-              onDelete={onDelete}
-              tasks={tasks}
-              setUserTasks={setUserTasks}
-            />
-          </ListItem>
-        );
+        if (task.state === stateToShow) {
+          const labelId = `checkbox-list-secondary-label-${task.taskName}`;
+          return (
+            <ListItem
+              key={task.id}
+              secondaryAction={
+                <Tooltip title="Choose task">
+                  <Checkbox
+                    edge="end"
+                    onChange={handleToggle(task)}
+                    checked={checked.indexOf(task) !== -1}
+                    inputProps={{
+                      "aria-labelledby": labelId,
+                      "aria-label": `Checkbox for ${task.taskName} task`,
+                    }}
+                    sx={{
+                      right: "50px",
+                      top: "-80px",
+                    }}
+                  />
+                </Tooltip>
+              }
+            >
+              <TaskCard
+                task={task}
+                onDelete={onDelete}
+                tasks={tasks}
+                setUserTasks={setUserTasks}
+              />
+            </ListItem>
+          );
+        }
       })}
     </List>
   );
