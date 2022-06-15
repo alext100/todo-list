@@ -11,6 +11,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
+import { useSnackbar } from "notistack";
 import * as React from "react";
 import { TasksCardProps } from "type";
 import { Task } from "utility/interfaces/task";
@@ -22,6 +23,14 @@ const TaskCard: React.FC<TasksCardProps> = ({
   tasks,
 }) => {
   const [state, setState] = React.useState<Task["state"]>(task.state);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleClick = () => {
+    onDelete(task.id);
+    enqueueSnackbar("Task was successfully deleted", {
+      variant: "error",
+    });
+  };
 
   return (
     <Card sx={{ minWidth: 300 }}>
@@ -35,11 +44,7 @@ const TaskCard: React.FC<TasksCardProps> = ({
           aria-label="button group for update and delete task"
           sx={{ position: "relative", top: 10, left: 40 }}
         >
-          <IconButton
-            aria-label="delete"
-            size="large"
-            onClick={() => onDelete(task.id)}
-          >
+          <IconButton aria-label="delete" size="large" onClick={handleClick}>
             <Tooltip title="Delete task">
               <DeleteIcon fontSize="inherit" />
             </Tooltip>

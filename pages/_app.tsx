@@ -1,10 +1,11 @@
+import lightTheme from "@/styles/theme/lightTheme";
 import { UserProvider } from "@auth0/nextjs-auth0";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import type { AppProps } from "next/app";
+import { SnackbarProvider } from "notistack";
 import PropTypes from "prop-types";
 import "../styles/globals.css";
-import lightTheme from "../styles/theme/lightTheme";
 import createEmotionCache from "../utility/createEmotionCache";
 
 interface ToDoAppProps extends AppProps {
@@ -18,10 +19,12 @@ function ToDoApp(props: ToDoAppProps) {
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        <UserProvider>
-          <Component {...pageProps} />
-        </UserProvider>
+        <SnackbarProvider maxSnack={3}>
+          <CssBaseline />
+          <UserProvider>
+            <Component {...pageProps} />
+          </UserProvider>
+        </SnackbarProvider>
       </ThemeProvider>
     </CacheProvider>
   );

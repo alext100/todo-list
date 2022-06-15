@@ -8,6 +8,7 @@ import {
   CardHeader,
   TextField,
 } from "@mui/material";
+import { useSnackbar } from "notistack";
 import * as React from "react";
 import { createNewTask } from "services/services";
 import { CreateTaskProps } from "type";
@@ -27,6 +28,13 @@ const CreateTask: React.FC<CreateTaskProps> = ({
   };
   const [task, setTask] = React.useState<Task>(initialTask);
   const [validationError, setValidationError] = React.useState<boolean>(false);
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleClick = () => {
+    enqueueSnackbar("New task was added!", {
+      variant: "success",
+    });
+  };
 
   const handleTaskChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTask({
@@ -98,6 +106,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
           </Box>
           <CardActions sx={{ justifyContent: "center" }}>
             <Button
+              onClick={handleClick}
               type={"submit"}
               variant="contained"
               endIcon={<AddTaskIcon />}
