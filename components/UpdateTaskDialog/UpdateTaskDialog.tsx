@@ -10,9 +10,9 @@ import {
   TextField,
   Tooltip,
 } from "@mui/material";
+import useTasks from "hooks/useTasks";
 import { useSnackbar } from "notistack";
 import * as React from "react";
-import { updateTask } from "services/services";
 import { Task, UpdateTaskDialogProps } from "type";
 import updateAllTasks from "utility/updateAllTasks";
 
@@ -21,6 +21,7 @@ const UpdateTaskDialog: React.FC<UpdateTaskDialogProps> = ({
   tasks = [],
   setUserTasks,
 }) => {
+  const { updateTask } = useTasks();
   const [open, setOpen] = React.useState(false);
   const [updatedTask, setUpdatedTask] = React.useState<Task>(task);
 
