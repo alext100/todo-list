@@ -4,7 +4,7 @@ import actionTypes from "../actions/actionTypes";
 const taskReducer = (action: IAction, tasks = []) => {
   let newTask;
 
-  switch (action.type) {
+  switch (action?.type) {
     case actionTypes.loadTasks:
       newTask = [...(action.tasks as Task[])];
       break;
@@ -24,7 +24,7 @@ const taskReducer = (action: IAction, tasks = []) => {
       break;
 
     default:
-      newTask = [...tasks];
+      newTask = [tasks];
   }
 
   return newTask;

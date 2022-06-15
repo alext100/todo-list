@@ -4,7 +4,7 @@ import actionTypes from "../actions/actionTypes";
 const currentTaskReducer = (action: IAction, currentTask = { task: {} }) => {
   let newCurrentTask;
 
-  switch (action.type) {
+  switch (action?.type) {
     case actionTypes.loadCurrentTask:
       newCurrentTask = { task: action.task };
       break;
