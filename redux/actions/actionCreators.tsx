@@ -1,9 +1,9 @@
 import { Task } from "type";
 import actionTypes from "./actionTypes";
 
-export const loadTasksAction = (tasks: Task[]) => ({
+export const loadTasksAction = (allTasks: Task[]) => ({
   type: actionTypes.loadTasks,
-  tasks,
+  allTasks,
 });
 
 export const createTaskAction = (task: Task) => ({
