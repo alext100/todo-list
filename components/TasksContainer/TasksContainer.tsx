@@ -1,7 +1,7 @@
 import TaskCard from "@/components/TaskCard/TaskCard";
 import { Checkbox, List, ListItem, Tooltip } from "@mui/material";
+import useTasks from "hooks/useTasks";
 import * as React from "react";
-import { deleteTask } from "services/services";
 import { Task, TasksContainerProps } from "type";
 
 const TasksContainer: React.FC<TasksContainerProps> = ({
@@ -9,6 +9,7 @@ const TasksContainer: React.FC<TasksContainerProps> = ({
   setUserTasks,
   stateToShow,
 }) => {
+  const { deleteTask } = useTasks();
   const [checked, setChecked] = React.useState<Task[]>([]);
 
   const onDelete = (id: string) => {
