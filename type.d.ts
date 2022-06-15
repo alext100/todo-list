@@ -42,3 +42,11 @@ export type UpdateTaskDialogProps = {
   setUserTasks: (arg0: Task[]) => void;
   tasks: Task[];
 };
+
+export interface IAction {
+  type: string;
+  user?: Object;
+  tasks?: Task[];
+  task: Task;
+  id?: string;
+}
