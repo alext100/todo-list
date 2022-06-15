@@ -1,10 +1,18 @@
 import axios from "axios";
 import { Task } from "type";
 
-const serverURL = "http://localhost:3010/tasks";
+const serverURL = process.env.NEXT_PUBLIC_SERVER_URL_MOCKEND as string;
+const authUserURL = process.env.NEXT_PUBLIC_AUTH_USER_URL_LOCAL as string;
+/* const serverURL = process.env.NEXT_PUBLIC_SERVER_URL_LOCAL as string; */
 
 const getTasks = async () => {
   const response = await axios.get(serverURL);
+
+  return response.data;
+};
+
+const getUser = async () => {
+  const response = await axios.get(authUserURL);
 
   return response.data;
 };
@@ -33,4 +41,4 @@ const updateTask = async (task: Task) => {
   });
 };
 
-export { getTasks, createNewTask, deleteTask, updateTask };
+export { getTasks, createNewTask, deleteTask, updateTask, getUser };
