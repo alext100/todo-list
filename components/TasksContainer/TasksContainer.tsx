@@ -39,6 +39,8 @@ const TasksContainer: React.FC<TasksContainerProps> = ({
         bgcolor: "background.paper",
         display: "flex",
         flexDirection: "column-reverse",
+        overflow: "auto",
+        maxHeight: "110vh",
       }}
     >
       {tasks.map((task: Task) => {
