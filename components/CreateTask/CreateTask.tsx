@@ -10,14 +10,9 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import { createNewTask } from "services/services";
+import { CreateTaskProps } from "type";
 import { Task } from "utility/interfaces/task";
 import { v4 as uuidv4 } from "uuid";
-
-type CreateTaskProps = {
-  // eslint-disable-next-line no-unused-vars
-  setUserTasks: (arg0: Task[]) => void;
-  tasks: Task[];
-};
 
 const CreateTask: React.FC<CreateTaskProps> = ({
   tasks = [],
