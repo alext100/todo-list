@@ -46,7 +46,8 @@ export type UpdateTaskDialogProps = {
 export interface IAction {
   type: string;
   user?: Object;
-  tasks?: Task[];
+  tasks: Task[];
   task: Task;
   id?: string;
+  allTasks: Task[];
 }
