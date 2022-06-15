@@ -3,6 +3,7 @@ import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
 import TasksContainer from "@/components/TasksContainer/TasksContainer";
 import styles from "@/styles/Home.module.css";
+import { Box } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
@@ -23,7 +24,23 @@ const Home: NextPage<HomePageProps> = ({ tasks }) => {
         </Head>
         <main className={styles.main}>
           <CreateTask tasks={userTasks} setUserTasks={setUserTasks} />
-          <TasksContainer tasks={userTasks} setUserTasks={setUserTasks} />
+          <Box sx={{ display: "flex" }}>
+            <TasksContainer
+              tasks={userTasks}
+              setUserTasks={setUserTasks}
+              stateToShow="ToDo"
+            />
+            <TasksContainer
+              tasks={userTasks}
+              setUserTasks={setUserTasks}
+              stateToShow="InProgress"
+            />
+            <TasksContainer
+              tasks={userTasks}
+              setUserTasks={setUserTasks}
+              stateToShow="Done"
+            />
+          </Box>
         </main>
       </div>
       <Footer />
