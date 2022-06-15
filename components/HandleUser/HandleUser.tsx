@@ -58,7 +58,7 @@ const HandleUser: React.FC = () => {
         >
           <MenuItem>
             <Typography textAlign="center">
-              <Link href="/api/auth/me">Profile</Link>
+              <Link href="/userprofile">Profile</Link>
             </Typography>
           </MenuItem>
           <MenuItem>
