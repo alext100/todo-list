@@ -43,7 +43,7 @@ const TasksContainer: React.FC<TasksContainerProps> = ({
     >
       {tasks.map((task: Task) => {
         if (task.state === stateToShow) {
-          const labelId = `checkbox-list-secondary-label-${task.taskName}`;
+          const labelId = `checkbox-task-list-label-${task.taskName}`;
           return (
             <ListItem
               key={task.id}
@@ -74,6 +74,7 @@ const TasksContainer: React.FC<TasksContainerProps> = ({
             </ListItem>
           );
         }
+        return null;
       })}
     </List>
   );
