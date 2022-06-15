@@ -9,9 +9,9 @@ import {
   CardHeader,
   TextField,
 } from "@mui/material";
+import useTasks from "hooks/useTasks";
 import { useSnackbar } from "notistack";
 import * as React from "react";
-import { createNewTask } from "services/services";
 import { CreateTaskProps, Task } from "type";
 import { v4 as uuidv4 } from "uuid";
 
@@ -19,6 +19,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
   tasks = [],
   setUserTasks,
 }) => {
+  const { createTask } = useTasks();
   const initialTask: Task = {
     id: "",
     taskName: "",
@@ -45,19 +46,15 @@ const CreateTask: React.FC<CreateTaskProps> = ({
     });
   };
 
-  const resetForm = () => {
-    setTask(initialTask);
-  };
-
-  const createTask = (event: React.FormEvent<HTMLFormElement>) => {
+  const submitForm = (event: React.FormEvent<HTMLFormElement>) => {
     if (task.taskName !== "" && task.taskDescription !== "") {
       event.preventDefault();
-      createNewTask(task);
-      resetForm();
-      setUserTasks([...tasks, task]);
+      createTask(task);
     } else {
       setValidationError(true);
     }
+    setTask(initialTask);
+    setUserTasks([...tasks, task]);
   };
 
   return (
@@ -68,7 +65,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
           component="form"
           data-testid="create-task-form"
           onSubmit={(event: React.FormEvent<HTMLFormElement>) =>
-            createTask(event)
+            submitForm(event)
           }
           sx={{
             "& > :not(style)": { m: 1 },
