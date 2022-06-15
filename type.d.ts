@@ -14,6 +14,8 @@ export type CreateTaskProps = {
 export type TasksCardProps = {
   onDelete: (arg0: string) => void;
   task: Task;
+  setUserTasks: (arg0: Task[]) => void;
+  tasks: Task[];
 };
 
 export type CardActionsSelectProps = {
@@ -23,5 +25,11 @@ export type CardActionsSelectProps = {
 };
 
 export type HomePageProps = {
+  tasks: Task[];
+};
+
+export type UpdateTaskDialogProps = {
+  task: Task;
+  setUserTasks: (arg0: Task[]) => void;
   tasks: Task[];
 };

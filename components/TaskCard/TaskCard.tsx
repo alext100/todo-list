@@ -1,5 +1,6 @@
+import CardActionsSelect from "@/components/TaskCard/CardActionsSelect";
+import UpdateTaskDialog from "@/components/UpdateTaskDialog/UpdateTaskDialog";
 import DeleteIcon from "@mui/icons-material/Delete";
-import UpdateIcon from "@mui/icons-material/Update";
 import {
   ButtonGroup,
   Card,
@@ -11,17 +12,16 @@ import {
   Typography,
 } from "@mui/material";
 import * as React from "react";
-import { updateTask } from "services/services";
 import { TasksCardProps } from "type";
 import { Task } from "utility/interfaces/task";
-import CardActionsSelect from "./CardActionsSelect";
 
-const TaskCard: React.FC<TasksCardProps> = ({ task, onDelete }) => {
+const TaskCard: React.FC<TasksCardProps> = ({
+  task,
+  onDelete,
+  setUserTasks,
+  tasks,
+}) => {
   const [state, setState] = React.useState<Task["state"]>(task.state);
-
-  const onUpdate = (taskToUpdate: Task) => {
-    updateTask(taskToUpdate);
-  };
 
   return (
     <Card sx={{ minWidth: 300 }}>
@@ -44,15 +44,11 @@ const TaskCard: React.FC<TasksCardProps> = ({ task, onDelete }) => {
               <DeleteIcon fontSize="inherit" />
             </Tooltip>
           </IconButton>
-          <IconButton
-            aria-label="update"
-            size="large"
-            onClick={() => onUpdate(task)}
-          >
-            <Tooltip title="Update task">
-              <UpdateIcon fontSize="inherit" />
-            </Tooltip>
-          </IconButton>
+          <UpdateTaskDialog
+            task={task}
+            setUserTasks={setUserTasks}
+            tasks={tasks}
+          />
         </ButtonGroup>
       </CardActions>
     </Card>
