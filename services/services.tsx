@@ -1,9 +1,11 @@
 import axios from "axios";
 import { Task } from "type";
 
-const serverURL = process.env.NEXT_PUBLIC_SERVER_URL_MOCKEND as string;
-const authUserURL = process.env.NEXT_PUBLIC_AUTH_USER_URL_LOCAL as string;
+/* const serverURL = process.env.NEXT_PUBLIC_SERVER_URL_MOCKEND as string; */
+/* const authUserURL = process.env.NEXT_PUBLIC_AUTH_USER_URL_LOCAL as string; */
 /* const serverURL = process.env.NEXT_PUBLIC_SERVER_URL_LOCAL as string; */
+const serverURL = "https://mockend.com/alext100/todo-list/tasks";
+const authUserURL = "https://todo-list-tr.netlify.app/api/auth/me";
 
 const getTasks = async () => {
   const response = await axios.get(serverURL);
