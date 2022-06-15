@@ -6,11 +6,10 @@ import {
   SelectChangeEvent,
   Tooltip,
 } from "@mui/material";
+import { useSnackbar } from "notistack";
 import * as React from "react";
 import { updateTask } from "services/services";
-import { CardActionsSelectProps } from "type";
-import { Task } from "utility/interfaces/task";
-import { useSnackbar } from "notistack";
+import { CardActionsSelectProps, Task } from "type";
 
 const CardActionsSelect: React.FC<CardActionsSelectProps> = ({
   state,

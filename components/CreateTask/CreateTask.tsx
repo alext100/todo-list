@@ -11,8 +11,7 @@ import {
 import { useSnackbar } from "notistack";
 import * as React from "react";
 import { createNewTask } from "services/services";
-import { CreateTaskProps } from "type";
-import { Task } from "utility/interfaces/task";
+import { CreateTaskProps, Task } from "type";
 import { v4 as uuidv4 } from "uuid";
 
 const CreateTask: React.FC<CreateTaskProps> = ({

@@ -2,8 +2,7 @@ import TaskCard from "@/components/TaskCard/TaskCard";
 import { Checkbox, List, ListItem, Tooltip } from "@mui/material";
 import * as React from "react";
 import { deleteTask } from "services/services";
-import { TasksContainerProps } from "type";
-import { Task } from "utility/interfaces/task";
+import { Task, TasksContainerProps } from "type";
 
 const TasksContainer: React.FC<TasksContainerProps> = ({
   tasks = [],

@@ -1,3 +1,4 @@
+import Transition from "@/components/Transitions/Transition";
 import UpdateIcon from "@mui/icons-material/Update";
 import {
   Button,
@@ -12,9 +13,7 @@ import {
 import { useSnackbar } from "notistack";
 import * as React from "react";
 import { updateTask } from "services/services";
-import { UpdateTaskDialogProps } from "type";
-import { Task } from "utility/interfaces/task";
-import Transition from "../Transitions/Transition";
+import { Task, UpdateTaskDialogProps } from "type";
 
 const UpdateTaskDialog: React.FC<UpdateTaskDialogProps> = ({
   task,

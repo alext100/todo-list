@@ -1,5 +1,11 @@
 /* eslint-disable no-unused-vars */
-import { Task } from "utility/interfaces/task";
+export interface Task {
+  id: string;
+  taskName: string;
+  taskDescription: string;
+  date: string;
+  state: "ToDo" | "InProgress" | "Done";
+}
 
 export type TasksContainerProps = {
   setUserTasks: (arg0: Task[]) => void;
