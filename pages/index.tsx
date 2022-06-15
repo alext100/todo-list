@@ -97,7 +97,7 @@ const Home: NextPage<HomePageProps> = ({ tasks }) => {
 };
 export default Home;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const newTasks = getTasks();
 
   return {
