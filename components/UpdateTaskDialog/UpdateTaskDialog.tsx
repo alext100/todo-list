@@ -9,6 +9,7 @@ import {
   TextField,
   Tooltip,
 } from "@mui/material";
+import { useSnackbar } from "notistack";
 import * as React from "react";
 import { updateTask } from "services/services";
 import { UpdateTaskDialogProps } from "type";
@@ -23,8 +24,13 @@ const UpdateTaskDialog: React.FC<UpdateTaskDialogProps> = ({
   const [open, setOpen] = React.useState(false);
   const [updatedTask, setUpdatedTask] = React.useState<Task>(task);
 
+  const { enqueueSnackbar } = useSnackbar();
+
   const onUpdate = (taskToUpdate: Task) => {
     updateTask(taskToUpdate);
+    enqueueSnackbar("Task was successfully updated", {
+      variant: "success",
+    });
   };
 
   const handleTaskChange = (event: React.ChangeEvent<HTMLInputElement>) => {
