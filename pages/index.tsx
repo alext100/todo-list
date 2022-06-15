@@ -6,10 +6,10 @@ import TasksContainer from "@/components/TasksContainer/TasksContainer";
 import styles from "@/styles/Home.module.css";
 import { useUser } from "@auth0/nextjs-auth0";
 import { Box, Container, Grid, Typography } from "@mui/material";
+import axios from "axios";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
-import { getTasks } from "services/services";
 import { HomePageProps } from "type";
 
 const Home: NextPage<HomePageProps> = ({ tasks }) => {
@@ -98,7 +98,9 @@ const Home: NextPage<HomePageProps> = ({ tasks }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const newTasks = getTasks();
+  const authUserURL = process.env.NEXT_PUBLIC_AUTH_USER_URL_LOCAL as string;
+  const response = await axios.get(authUserURL);
+  const newTasks = await response.data;
 
   return {
     props: {
