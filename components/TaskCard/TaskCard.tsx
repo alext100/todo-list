@@ -12,14 +12,9 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import { updateTask } from "services/services";
+import { TasksCardProps } from "type";
 import { Task } from "utility/interfaces/task";
 import CardActionsSelect from "./CardActionsSelect";
-
-type TasksCardProps = {
-  // eslint-disable-next-line no-unused-vars
-  onDelete: (arg0: string) => void;
-  task: Task;
-};
 
 const TaskCard: React.FC<TasksCardProps> = ({ task, onDelete }) => {
   const [state, setState] = React.useState<Task["state"]>(task.state);
