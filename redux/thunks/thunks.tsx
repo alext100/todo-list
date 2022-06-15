@@ -14,11 +14,9 @@ const serverURL = process.env.NEXT_PUBLIC_SERVER_URL_LOCAL as string;
 
 export const getTasksThunk =
   (): ThunkAction<void, RootState, unknown, AnyAction> => async (dispatch) => {
-    const response = await fetch(serverURL, {
-      method: "GET",
-    });
-    if (response.ok) {
-      const loadedTasks = await response.json();
+    const response = await axios(serverURL);
+    if (response) {
+      const loadedTasks = await response.data;
       dispatch(loadTasksAction(loadedTasks));
     } else {
       throw new Error("Could not fetch information from the API");
@@ -28,14 +26,13 @@ export const getTasksThunk =
 export const createTaskThunk =
   (task: Task): ThunkAction<void, RootState, unknown, AnyAction> =>
   async (dispatch) => {
-    const response = await fetch(serverURL, {
+    const response = await axios({
+      url: serverURL,
       method: "POST",
-      body: JSON.stringify(task),
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
+      data: JSON.stringify({ ...task, state: "ToDo" }),
     });
-    const taskToCreate = await response.json();
+    const taskToCreate = await response.data;
     dispatch(createTaskAction(taskToCreate));
   };
 
