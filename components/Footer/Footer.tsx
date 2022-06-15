@@ -4,7 +4,7 @@ import { Box, Button, Divider, Tooltip, Typography } from "@mui/material";
 import Link from "next/link";
 import * as React from "react";
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <>
     <Divider variant="middle" />
     <Typography component="div">
