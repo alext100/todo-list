@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import currentTaskReducer from "./currentTaskReducer";
-import taskReducer from "./taskReducer";
+import tasksReducer from "./tasksReducer";
+import allTasksReducer from "./allTasksReducer";
 
 const rootReducer = combineReducers({
-  tasks: taskReducer,
+  tasks: tasksReducer,
+  allTasks: allTasksReducer,
   currentTask: currentTaskReducer,
 });
 
