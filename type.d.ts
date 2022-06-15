@@ -10,6 +10,7 @@ export interface Task {
 export type TasksContainerProps = {
   setUserTasks: (arg0: Task[]) => void;
   tasks: Task[];
+  stateToShow: Task["state"];
 };
 
 export type CreateTaskProps = {
@@ -28,6 +29,8 @@ export type CardActionsSelectProps = {
   setState: (arg0: Task["state"]) => void;
   task: Task;
   state: Task["state"];
+  setUserTasks: (arg0: Task[]) => void;
+  tasks: Task[];
 };
 
 export type HomePageProps = {
