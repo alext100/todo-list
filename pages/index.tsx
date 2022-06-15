@@ -5,7 +5,7 @@ import NotLoggedInUserView from "@/components/NotLoggedInUserView/NotLoggedInUse
 import TasksContainer from "@/components/TasksContainer/TasksContainer";
 import styles from "@/styles/Home.module.css";
 import { useUser } from "@auth0/nextjs-auth0";
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
@@ -37,22 +37,52 @@ const Home: NextPage<HomePageProps> = ({ tasks }) => {
             </Head>
             <main className={styles.main}>
               <CreateTask tasks={userTasks} setUserTasks={setUserTasks} />
-              <Grid className={styles.grid}>
-                <TasksContainer
-                  tasks={userTasks}
-                  setUserTasks={setUserTasks}
-                  stateToShow="ToDo"
-                />
-                <TasksContainer
-                  tasks={userTasks}
-                  setUserTasks={setUserTasks}
-                  stateToShow="InProgress"
-                />
-                <TasksContainer
-                  tasks={userTasks}
-                  setUserTasks={setUserTasks}
-                  stateToShow="Done"
-                />
+              <Grid container className={styles.grid}>
+                <Grid
+                  item
+                  sx={{
+                    p: 2,
+                    border: "1px dashed grey",
+                    minHeight: "fit-content",
+                  }}
+                >
+                  <Typography variant="h5">To Do</Typography>
+                  <TasksContainer
+                    tasks={userTasks}
+                    setUserTasks={setUserTasks}
+                    stateToShow="ToDo"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  sx={{
+                    p: 2,
+                    border: "1px dashed grey",
+                    minHeight: "fit-content",
+                  }}
+                >
+                  <Typography variant="h5">In Progress</Typography>
+                  <TasksContainer
+                    tasks={userTasks}
+                    setUserTasks={setUserTasks}
+                    stateToShow="InProgress"
+                  />
+                </Grid>
+                <Grid
+                  item
+                  sx={{
+                    p: 2,
+                    border: "1px dashed grey",
+                    minHeight: "fit-content",
+                  }}
+                >
+                  <Typography variant="h5">Done</Typography>
+                  <TasksContainer
+                    tasks={userTasks}
+                    setUserTasks={setUserTasks}
+                    stateToShow="Done"
+                  />{" "}
+                </Grid>
               </Grid>
               <Box sx={{ display: "flex" }}></Box>
             </main>
