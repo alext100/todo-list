@@ -10,20 +10,25 @@ import { useSnackbar } from "notistack";
 import * as React from "react";
 import { updateTask } from "services/services";
 import { CardActionsSelectProps, Task } from "type";
+import updateAllTasks from "utility/updateAllTasks";
 
 const CardActionsSelect: React.FC<CardActionsSelectProps> = ({
   state,
   setState,
   task,
+  tasks = [],
+  setUserTasks,
 }) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (event: SelectChangeEvent<typeof state>) => {
+    const updatedTask = { ...task, state: event.target.value as Task["state"] };
     setState(event.target.value as Task["state"]);
-    updateTask({ ...task, state: event.target.value as Task["state"] });
+    updateTask(updatedTask);
     enqueueSnackbar(`Task state was changed to ${event.target.value}`, {
       variant: "success",
     });
+    setUserTasks(updateAllTasks(tasks, updatedTask));
   };
 
   return (
