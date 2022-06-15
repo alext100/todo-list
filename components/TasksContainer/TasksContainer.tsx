@@ -2,13 +2,8 @@ import TaskCard from "@/components/TaskCard/TaskCard";
 import { Checkbox, List, ListItem, Tooltip } from "@mui/material";
 import * as React from "react";
 import { deleteTask } from "services/services";
+import { TasksContainerProps } from "type";
 import { Task } from "utility/interfaces/task";
-
-type TasksContainerProps = {
-  // eslint-disable-next-line no-unused-vars
-  setUserTasks: (arg0: Task[]) => void;
-  tasks: Task[];
-};
 
 const TasksContainer: React.FC<TasksContainerProps> = ({
   tasks = [],
