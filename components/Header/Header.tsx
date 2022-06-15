@@ -3,7 +3,7 @@ import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import * as React from "react";
 import HandleUser from "../HandleUser/HandleUser";
 
-const Header = () => {
+const Header: React.FC = () => {
   const { user } = useUser();
 
   return (

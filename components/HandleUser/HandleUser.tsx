@@ -12,7 +12,7 @@ import {
 import Link from "next/link";
 import * as React from "react";
 
-const HandleUser = () => {
+const HandleUser: React.FC = () => {
   const { user, error, isLoading } = useUser();
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null

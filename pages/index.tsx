@@ -7,9 +7,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import { useState } from "react";
 import { getTasks } from "services/services";
-import { Task } from "utility/interfaces/task";
-
-type HomePageProps = { tasks: Task[] };
+import { HomePageProps } from "type";
 
 const Home: NextPage<HomePageProps> = ({ tasks }) => {
   const [userTasks, setUserTasks] = useState(tasks);

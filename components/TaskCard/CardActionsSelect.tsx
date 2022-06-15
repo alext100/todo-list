@@ -8,14 +8,8 @@ import {
 } from "@mui/material";
 import * as React from "react";
 import { updateTask } from "services/services";
+import { CardActionsSelectProps } from "type";
 import { Task } from "utility/interfaces/task";
-
-type CardActionsSelectProps = {
-  // eslint-disable-next-line no-unused-vars
-  setState: (arg0: Task["state"]) => void;
-  task: Task;
-  state: Task["state"];
-};
 
 const CardActionsSelect: React.FC<CardActionsSelectProps> = ({
   state,
