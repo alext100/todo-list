@@ -6,9 +6,9 @@ import {
   SelectChangeEvent,
   Tooltip,
 } from "@mui/material";
+import useTasks from "hooks/useTasks";
 import { useSnackbar } from "notistack";
 import * as React from "react";
-import { updateTask } from "services/services";
 import { CardActionsSelectProps, Task } from "type";
 import updateAllTasks from "utility/updateAllTasks";
 
@@ -19,6 +19,7 @@ const CardActionsSelect: React.FC<CardActionsSelectProps> = ({
   tasks = [],
   setUserTasks,
 }) => {
+  const { updateTask } = useTasks();
   const { enqueueSnackbar } = useSnackbar();
 
   const handleChange = (event: SelectChangeEvent<typeof state>) => {
