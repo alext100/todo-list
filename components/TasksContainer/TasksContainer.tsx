@@ -64,7 +64,12 @@ const TasksContainer: React.FC<TasksContainerProps> = ({
               </Tooltip>
             }
           >
-            <TaskCard task={task} onDelete={onDelete} />
+            <TaskCard
+              task={task}
+              onDelete={onDelete}
+              tasks={tasks}
+              setUserTasks={setUserTasks}
+            />
           </ListItem>
         );
       })}
