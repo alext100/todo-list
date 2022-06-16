@@ -32,10 +32,13 @@ const TaskCard: React.FC<TasksCardProps> = ({
   };
 
   return (
-    <Card sx={{ minWidth: 300 }}>
-      <CardHeader title={task?.taskName} subheader={task?.date} />
+    <Card sx={{ width: 360 }}>
+      <CardHeader
+        title={task?.taskName}
+        subheader={new Date(task.date).toLocaleString()}
+      />
       <CardContent>
-        <Typography variant="body2">{task?.taskDescription}</Typography>
+        <Typography variant="body2">{task?.taskDescription} </Typography>
       </CardContent>
       <CardActions>
         <CardActionsSelect
