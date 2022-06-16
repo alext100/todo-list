@@ -119,6 +119,7 @@ En el proyecto, uso .env.local, pero para que no tengáis problemas con este arc
 
 #### Components
 
+```bash
 components
 | ├── CreateTask
 | | └── CreateTask.tsx
@@ -139,3 +140,7 @@ components
 | | └── Transition.tsx
 | └── UpdateTaskDialog
 | └── UpdateTaskDialog.tsx
+```
+
+![2022-06-16_021838](https://user-images.githubusercontent.com/83639312/173963216-26411b84-a8d6-4d57-a222-dda1e5276814.png)
+
