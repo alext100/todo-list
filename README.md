@@ -1,5 +1,7 @@
 # ToDo App
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/86af3a48-1000-41ad-9961-07b8dfdbf323/deploy-status)](https://app.netlify.com/sites/todo-list-tr/deploys)
+
 Hice este proyecto como una tarea de prueba técnica.
 
 Quiero contaros por que elegí Next.js Framework. Tuve tiempo para pensar cómo me gustaba hacer esta tarea. Y entendí que con Vue.JS y Typescript no tenía ningún problema. Conozco las características del Framework Vue3 y del ecosistema. Pero quería usar esta tarea para aprender algo nuevo. Pues decidí arriesgarme y elegí Next.Js, MaterialUI y Typescript. Hablo de riesgo porque siempre existe la posibilidad de perder mucho tiempo trabajando con tecnología desconocida. Siempre hay muchas trampas.
@@ -141,6 +143,8 @@ components
 | └── UpdateTaskDialog
 | └── UpdateTaskDialog.tsx
 ```
+
+#### Screenshots
 
 ![2022-06-16_021838](https://user-images.githubusercontent.com/83639312/173963216-26411b84-a8d6-4d57-a222-dda1e5276814.png)
 
