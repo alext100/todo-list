@@ -3,7 +3,7 @@ export interface Task {
   id: string;
   taskName: string;
   taskDescription: string;
-  date: string;
+  date: Date | string;
   state: "ToDo" | "InProgress" | "Done";
 }
 
