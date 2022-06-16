@@ -46,7 +46,9 @@ const Home: NextPage<HomePageProps> = ({ tasks }) => {
                     minHeight: "fit-content",
                   }}
                 >
-                  <Typography variant="h5">To Do</Typography>
+                  <Typography variant="h5" ml={1}>
+                    To Do
+                  </Typography>
                   <TasksContainer
                     tasks={userTasks}
                     setUserTasks={setUserTasks}
@@ -61,7 +63,9 @@ const Home: NextPage<HomePageProps> = ({ tasks }) => {
                     minHeight: "fit-content",
                   }}
                 >
-                  <Typography variant="h5">In Progress</Typography>
+                  <Typography variant="h5" ml={1}>
+                    In Progress
+                  </Typography>
                   <TasksContainer
                     tasks={userTasks}
                     setUserTasks={setUserTasks}
@@ -76,7 +80,9 @@ const Home: NextPage<HomePageProps> = ({ tasks }) => {
                     minHeight: "fit-content",
                   }}
                 >
-                  <Typography variant="h5">Done</Typography>
+                  <Typography variant="h5" ml={1}>
+                    Done
+                  </Typography>
                   <TasksContainer
                     tasks={userTasks}
                     setUserTasks={setUserTasks}
