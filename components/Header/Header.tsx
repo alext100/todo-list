@@ -12,7 +12,7 @@ const Header: React.FC = () => {
         <Toolbar>
           {user && (
             <Typography variant="h5" component="div" sx={{ flexGrow: 1 }}>
-              All {user.name} tasks
+              {`All ${user.given_name ? user.given_name : "your"}'s tasks`}
             </Typography>
           )}
           {!user && (

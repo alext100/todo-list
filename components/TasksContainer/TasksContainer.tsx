@@ -1,5 +1,5 @@
 import TaskCard from "@/components/TaskCard/TaskCard";
-import { Checkbox, List, ListItem, Tooltip } from "@mui/material";
+import { List, ListItem } from "@mui/material";
 import * as React from "react";
 import { deleteTask } from "services/services";
 import { Task, TasksContainerProps } from "type";
@@ -9,25 +9,10 @@ const TasksContainer: React.FC<TasksContainerProps> = ({
   setUserTasks,
   stateToShow,
 }) => {
-  const [checked, setChecked] = React.useState<Task[]>([]);
-
   const onDelete = (id: string) => {
     deleteTask(id);
     const newTaskList = tasks.filter((task: Task) => task.id !== id);
     setUserTasks(newTaskList);
-  };
-
-  const handleToggle = (value: Task) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
   };
 
   return (
@@ -35,35 +20,19 @@ const TasksContainer: React.FC<TasksContainerProps> = ({
       dense
       sx={{
         width: "100%",
-        maxWidth: 360,
+        minWidth: 380,
         bgcolor: "background.paper",
         display: "flex",
         flexDirection: "column-reverse",
+        justifyContent: "center",
       }}
     >
       {tasks.map((task: Task) => {
         if (task.state === stateToShow) {
-          const labelId = `checkbox-task-list-label-${task.taskName}`;
           return (
             <ListItem
               key={task.id}
-              secondaryAction={
-                <Tooltip title="Choose task">
-                  <Checkbox
-                    edge="end"
-                    onChange={handleToggle(task)}
-                    checked={checked.indexOf(task) !== -1}
-                    inputProps={{
-                      "aria-labelledby": labelId,
-                      "aria-label": `Checkbox for ${task.taskName} task`,
-                    }}
-                    sx={{
-                      right: "50px",
-                      top: "-80px",
-                    }}
-                  />
-                </Tooltip>
-              }
+              sx={{ padding: 0, justifyContent: "center" }}
             >
               <TaskCard
                 task={task}

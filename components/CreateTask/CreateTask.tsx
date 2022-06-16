@@ -23,7 +23,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
     id: "",
     taskName: "",
     taskDescription: "",
-    date: "",
+    date: new Date(),
     state: "ToDo",
   };
   const [task, setTask] = React.useState<Task>(initialTask);
@@ -41,7 +41,7 @@ const CreateTask: React.FC<CreateTaskProps> = ({
       ...task,
       [event.target.id]: event.target.value,
       id: uuidv4(),
-      date: new Date().toLocaleString(),
+      date: new Date(),
     });
   };
 
