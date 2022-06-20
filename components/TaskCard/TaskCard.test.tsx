@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Task } from "type";
 import TaskCard from "./TaskCard";
 
@@ -73,6 +73,20 @@ describe("Given a TaskCard component", () => {
       });
 
       expect(updateButton).toBeInTheDocument();
+    });
+
+    describe("When a user click on delete button", () => {
+      test("Then it should call onDelete function from props", async () => {
+        render(<TaskCard {...props} />);
+
+        const deleteButton = screen.getByRole("button", {
+          name: "delete",
+        });
+
+        await fireEvent.click(deleteButton);
+
+        expect(props.onDelete).toHaveBeenCalledTimes(1);
+      });
     });
   });
 });
