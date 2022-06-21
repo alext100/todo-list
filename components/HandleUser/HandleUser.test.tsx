@@ -27,7 +27,7 @@ describe("Given a HandleUser component", () => {
       test("Then it should show message for logged-in user", async () => {
         render(<Header />);
 
-        const text = screen.getByText(`All ${user.name} tasks`);
+        const text = screen.getByText(`All your's tasks`);
 
         expect(text).toBeInTheDocument();
       });
