@@ -37,5 +37,4 @@ module.exports = {
   ],
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   modulePaths: ["<rootDir>"],
-  testResultsProcessor: "jest-sonar-reporter",
 };
