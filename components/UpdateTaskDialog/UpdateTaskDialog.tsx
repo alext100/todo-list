@@ -68,6 +68,7 @@ const UpdateTaskDialog: React.FC<UpdateTaskDialogProps> = ({
         aria-describedby="update-task-dialog"
         TransitionComponent={Transition}
         keepMounted
+        data-testid="dialog"
       >
         <DialogTitle>Update task</DialogTitle>
         <DialogContent>
