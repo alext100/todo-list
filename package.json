@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watchAll --collect-coverage",
-    "test:unit": "jest"
+    "test:unit": "jest",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.9.0",
